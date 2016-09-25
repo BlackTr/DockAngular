@@ -1,0 +1,32 @@
+﻿api:
+  image: microsoft/dotnet
+  volumes:
+    - ./tstProj/:/app/
+    - ~/.nuget/:/root/.nuget/
+  working_dir: /app/
+  command: bash -c "dotnet restore && dotnet watch run"
+  environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - VIRTUAL_HOST=api.domain.local
+    - VIRTUAL_PORT=5000
+  ports:
+    - "5000:5000"
+front:
+  image: node
+  volumes:
+    - ./front/:/app/
+  working_dir: /app/
+  command: bash -c "npm --unsafe-perm install && npm start"
+  #command: bash -c "npm install && npm run postinstall && npm start"
+  #command: npm --unsafe-perm install
+  ports:
+    - "8080:8080"
+  links:
+    - api
+#nginx:
+#  image: jwilder/nginx-proxy
+#  container_name: nginx-proxy
+#  volumes:
+#    - /var/run/docker.sock:/tmp/docker.sock
+#  ports:
+#    - "80:80"
