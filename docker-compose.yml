@@ -1,7 +1,7 @@
 ﻿api:
   image: microsoft/dotnet
   volumes:
-    - ./tstProj/:/app/
+    - ./back/:/app/
     - ~/.nuget/:/root/.nuget/
   working_dir: /app/
   command: bash -c "dotnet restore && dotnet watch run"

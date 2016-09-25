@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 
 
-namespace tstProj
+namespace backend
 {
 	public class Program
 	{
