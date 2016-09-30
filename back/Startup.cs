@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 using TodoApi.Models;
 
@@ -30,12 +31,17 @@ namespace backend
 			// Add framework services.
     		services.AddMvc();
 
-    		services.AddSingleton<ITodoRepository, TodoRepositoryMemory>();
+          	services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(
+                    Configuration["Data:ConnectionString"]));
+
+    		//services.AddSingleton<ITodoRepository, TodoRepositoryMemory>();
+    		services.AddScoped<ITodoRepository, TodoRepositoryDb>();
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
 			loggerFactory.AddConsole();
+			loggerFactory.AddDebug();
 
 			if (env.IsDevelopment())
 			{
