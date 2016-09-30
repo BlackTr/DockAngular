@@ -25,7 +25,7 @@ namespace TodoApi.Models
 
         public IEnumerable<TodoItem> GetAll()
         {
-            return _dbContext.Items.AsEnumerable();
+            return _dbContext.Todos.AsEnumerable();
         }
 
         public TodoItem Remove(string key)

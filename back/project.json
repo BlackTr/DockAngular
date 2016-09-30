@@ -2,16 +2,22 @@
 	"version": "1.0.0-*",
 	"tools": {
     		"Microsoft.DotNet.Watcher.Tools": {
-      		"version": "1.0.0-*",
-      		"imports": "portable-net451+win8"
-    	}
-    },
+                     		"version": "1.0.0-*"
+    	        },
+                "Microsoft.EntityFrameworkCore.Tools": {
+                     "version": "1.0.0-*"
+                }
+        },
     
 	"dependencies": {
 		"Microsoft.NETCore.App": {
 			"version": "1.0.0",
 			"type": "platform"
 		},
+                "Microsoft.EntityFrameworkCore.Tools": {
+                        "version": "1.0.0-*",
+                        "type": "build"
+                },
 		"Microsoft.AspNetCore.Diagnostics": "1.0.0",
 		"Microsoft.AspNetCore.Mvc": "1.0.0",
 		"Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
@@ -19,14 +25,14 @@
 		"Microsoft.Extensions.Logging.Debug": "1.0.0",
 		"Microsoft.EntityFrameworkCore": "1.0.0",
 		"Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0",
-        "Microsoft.Extensions.Configuration.Json": "1.0.0"
+                "Microsoft.Extensions.Configuration.Json": "1.0.0"
 	},
 
 	"frameworks": {
 		"netcoreapp1.0": {
 			"imports": [
 				"dotnet5.6",
-				"portable-net45+win8"
+				"portable-net452+win81"
 			]
 		}
 	},

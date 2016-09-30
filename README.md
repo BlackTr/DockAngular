@@ -11,3 +11,8 @@ OR
 docker-compose up -d #run in detached mode
 ```
 Navigate to [localhost:8080](localhost:8080)
+
+
+#### change entities (and/or db structure):
+1. change in code
+2. restart containers->new migration will be genarated
