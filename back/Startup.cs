@@ -8,12 +8,29 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 
+using TodoApi.Models;
+
 namespace backend
 {
 	public class Startup
 	{
+		public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+		}
+		public IConfigurationRoot Configuration { get; }
+
 		public void ConfigureServices(IServiceCollection services)
 		{
+			// Add framework services.
+    		services.AddMvc();
+
+    		services.AddSingleton<ITodoRepository, TodoRepositoryMemory>();
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -25,19 +42,18 @@ namespace backend
 				app.UseDeveloperExceptionPage();
 			}
 
-			app.Run(async (context) =>
+			app.UseMvc();
+
+			/*app.Run(async (context) =>
 			{
-				var config = new ConfigurationBuilder()
-					.AddEnvironmentVariables()
-					.Build();
-				var ch = config.GetChildren();
+				var ch = Configuration.GetChildren();
 				var st = "";
 				foreach (var envVar in ch)
 				{
 					st+= $"{envVar.Key}: {envVar.Value},";
 				}
-				await context.Response.WriteAsync("Hello World!!:" + st);
-			});
+				await context.Response.WriteAsync("Hello World:" + st);
+			});*/
 		}
 	}
 }
