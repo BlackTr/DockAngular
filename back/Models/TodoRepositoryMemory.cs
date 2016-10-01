@@ -12,6 +12,8 @@ namespace TodoApi.Models
         public TodoRepositoryMemory()
         {
             Add(new TodoItem { Name = "Todo 1" });
+            Add(new TodoItem { Name = "Todo 2" });
+            Add(new TodoItem { Name = "Todo 3" });
         }
 
         public IEnumerable<TodoItem> GetAll()

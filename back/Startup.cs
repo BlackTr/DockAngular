@@ -30,6 +30,12 @@ namespace backend
 		{
 			// Add framework services.
     		services.AddMvc();
+                services.AddCors(options =>
+                {
+                     //options.AddPolicy("MyCors", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+                     options.AddPolicy("MyCors", p => p.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+                });
+
 
           	services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(
                     Configuration["Data:ConnectionString"]));
@@ -48,6 +54,7 @@ namespace backend
 				app.UseDeveloperExceptionPage();
 			}
 
+                        app.UseCors("MyCors");
 			app.UseMvc();
 
 			/*app.Run(async (context) =>

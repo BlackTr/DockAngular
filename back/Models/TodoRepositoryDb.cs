@@ -15,7 +15,9 @@ namespace TodoApi.Models
 
         public void Add(TodoItem item)
         {
-            throw new NotImplementedException();
+            item.Key = Guid.NewGuid().ToString();
+            _dbContext.Todos.Add(item);
+            _dbContext.SaveChanges();
         }
 
         public TodoItem Find(string key)
