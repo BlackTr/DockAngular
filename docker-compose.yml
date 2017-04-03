@@ -1,5 +1,5 @@
 ﻿api:
-  image: microsoft/dotnet
+  image: microsoft/dotnet:1.1.1-sdk
   volumes:
     - ./back/:/app/
     - ~/.nuget/:/root/.nuget/

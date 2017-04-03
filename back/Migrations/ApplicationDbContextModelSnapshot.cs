@@ -13,7 +13,7 @@ namespace app.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
+                .HasAnnotation("ProductVersion", "1.0.3");
 
             modelBuilder.Entity("TodoApi.Models.TodoItem", b =>
                 {
