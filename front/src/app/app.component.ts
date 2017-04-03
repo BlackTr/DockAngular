@@ -4,7 +4,7 @@ import {Http, Response, RequestOptions, Headers} from '@angular/http'
 import {Todo} from "./todo";
 
 @Component({
-    selector: 'my-app',
+    selector: 'app-root',
     template: `<h1>My First Angular App</h1>
         <ul>
             <li *ngFor="let todo of todos">

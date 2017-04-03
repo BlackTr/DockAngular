@@ -10,7 +10,7 @@ docker-compose up #run
 OR
 docker-compose up -d #run in detached mode
 ```
-Navigate to [localhost:8080](localhost:8080)
+Navigate to [localhost:4200](localhost:4200)
 
 #### stop containers:
 ```

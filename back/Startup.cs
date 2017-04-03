@@ -33,7 +33,7 @@ namespace backend
                 services.AddCors(options =>
                 {
                      //options.AddPolicy("MyCors", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
-                     options.AddPolicy("MyCors", p => p.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+                     options.AddPolicy("MyCors", p => p.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
                 });
 
 
